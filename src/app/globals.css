@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #050705;
+  --bg-raised: #0c100c;
+  --bg-panel: #101610;
+  --line: #1c3a1c;
+  --text: #d7f5d7;
+  --muted: #7ea57e;
+  --neon: #39ff14;
+  --neon-dim: #1fa80e;
+  --danger: #ff5c5c;
+  --warn: #f5c542;
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-panel: var(--bg-panel);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-neon: var(--neon);
+  --color-neon-dim: var(--neon-dim);
+  --color-danger: var(--danger);
+  --color-warn: var(--warn);
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background-image:
+    radial-gradient(circle at 20% -10%, rgba(57, 255, 20, 0.08), transparent 36%),
+    linear-gradient(rgba(57, 255, 20, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 20, 0.035) 1px, transparent 1px);
+  background-size: auto, 42px 42px, 42px 42px;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(57, 255, 20, 0.28);
+}
+
+:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 3px;
+}
+
+.glow-border {
+  box-shadow: 0 0 0 1px rgba(57, 255, 20, 0.25), 0 0 24px rgba(57, 255, 20, 0.08);
+}
+
+.scanline {
+  position: relative;
+}
+
+.scanline::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 3px
+  );
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(57, 255, 20, 0.9);
+  }
+}
+
+.neon-text {
+  color: var(--neon);
+  animation: pulse-glow 3.4s ease-in-out infinite;
+}
